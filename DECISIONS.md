@@ -28,6 +28,6 @@
 - Rejected: float money, foreign keys
 - Why: Decimal compares money exactly, and orphan rows still import
 
-## Decision: plain Django HTML page instead of React
-- Rejected: React/Vite
-- Why: the brief allows it, and a correct table matters more than looks
+## Decision: React (Vite) table screen using a dev proxy to the Django API
+- Rejected: calling the API directly from the browser (CORS errors)
+- Why: the proxy in vite.config.js forwards /api to Django, so no CORS changes were needed. A plain HTML page is also still served at the backend's root
