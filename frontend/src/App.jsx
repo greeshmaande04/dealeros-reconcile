@@ -12,7 +12,7 @@ export default function App() {
 
   useEffect(() => {
     const q = new URLSearchParams({ org, ...(reason && { reason }), ...(sort && { sort }) });
-    fetch(`/api/disagreements/?${q}`)
+    fetch(`${import.meta.env.VITE_API_URL || ""}/api/disagreements/?${q}`)
       .then((r) => r.json())
       .then((d) => { setRows(d.results || []); setError(d.error || ""); })
       .catch(() => setError("Could not reach the API"));
